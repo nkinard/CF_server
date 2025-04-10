@@ -286,7 +286,7 @@ app.post("/api/spotlights", upload.single("img"), (req, res) => {
     }
 
     const spot = {
-        id: spot.length+1,
+        id: spot.length,
         name: req.body.name,
         summary:req.body.summary,
         latitude: req.body.latitude,
@@ -301,6 +301,10 @@ app.post("/api/spotlights", upload.single("img"), (req, res) => {
         outerimage: req.body.outerimage,
     };
 
+    if(req.file){
+      spot.outerimage = req.file.filename;
+    }
+
     spotlights.push(spot);
     res.status(200).send(spot);
 });
@@ -310,16 +314,17 @@ const validateSpotlight = (spotlight) => {
     const schema = Joi.object({
         id:Joi.allow(""),
         name:Joi.string().min(3).required(),
-        summary,
+        summary: Joi.string().min(3).required(),
         longitude:Joi.number().required(),
         latitude:Joi.number().required(),
         fish:Joi.string().min(3).required(),
         flies:Joi.string().min(3).required(),
-        bodywater,
-        entrytype,
-        rating,
-        innerimage,
-        outerimage,
+        bodywater:Joi.string().min(3).required(),
+        entrytype:Joi.string().min(3).required(),
+        rating:Joi.string().min(3).required(),
+        seasons:Joi.string().min(3).required(),
+        innerimage:,
+        outerimage:,
     });
 
     return schema.validate(spotlight);
