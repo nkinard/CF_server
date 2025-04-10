@@ -281,6 +281,7 @@ app.post("/api/spotlights", upload.single("img"), (req, res) => {
     const result = validateSpotlight(req.body);
 
     if(result.error){
+        console.log("I have an error");
         res.status(400).send(result.error.details[0].message);
         return;
     }
@@ -318,7 +319,7 @@ const validateSpotlight = (spotlight) => {
         summary: Joi.string().min(3).required(),
         longitude:Joi.number().required(),
         latitude:Joi.number().required(),
-        fish:Joi.string().min(3).required(),
+        fishes:Joi.string().min(3).required(),
         flies:Joi.string().min(3).required(),
         bodywater:Joi.string().min(3).required(),
         entrytype:Joi.string().min(3).required(),
