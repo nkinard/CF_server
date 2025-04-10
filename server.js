@@ -277,35 +277,44 @@ app.get("/api/spotlights", (req, res) => {
   res.send(spotlights);
 });
 
-app.post("/api/spotlights", upload.single("img"), (req, res) => {
+app.post("/api/spotlights", upload.fields([
+  { name: 'outerimage', maxCount: 1 },
+  { name: 'innerimage', maxCount: 1 }]), (req, res) => {
     const result = validateSpotlight(req.body);
 
     if(result.error){
         console.log("I have an error");
         res.status(400).send(result.error.details[0].message);
         return;
-    }
+    };
 
     const spot = {
-        id: spot.length,
+        id: spotlights.length+1,
         name: req.body.name,
         summary:req.body.summary,
-        latitude: req.body.latitude,
-        longitude: req.body.longitude,
+        latitude: parseFloat(req.body.latitude),
+        longitude: parseFloat(req.body.longitude),
         fishes: req.body.fishes,
         flies:req.body.flies,
         watertype: req.body.watertype,
         typeofentry: req.body.typeofentry,
         rating: req.body.rating,
-        innerimage: req.body.innerimage,
+        innerimage: '',
         seasons: req.body.seasons,
-        outerimage: req.body.outerimage,
+        outerimage: '',
     };
 
-    if(req.file){
-      spot.outerimage = "images/" + req.file.filename;
-      spot.innerimage = "images/" + req.file.filename;
-    }
+    if (req.files && req.files['outerimage'] && req.files['outerimage'][0]) {
+      spot.outerimage = req.files['outerimage'][0].filename;
+
+      console.log(spot.outerimage);
+    };
+  
+    if (req.files && req.files['innerimage'] && req.files['innerimage'][0]) {
+      spot.innerimage = req.files['innerimage'][0].filename;
+
+      console.log(spot.innerimage);
+    };
 
     spotlights.push(spot);
     res.status(200).send(spot);
@@ -321,9 +330,9 @@ const validateSpotlight = (spotlight) => {
         latitude:Joi.number().required(),
         fishes:Joi.string().min(3).required(),
         flies:Joi.string().min(3).required(),
-        bodywater:Joi.string().min(3).required(),
-        entrytype:Joi.string().min(3).required(),
-        rating:Joi.string().min(3).required(),
+        watertype:Joi.string().min(3).required(),
+        typeofentry:Joi.string().min(3).required(),
+        rating:Joi.number().required(),
         seasons:Joi.string().min(3).required()
     });
 
