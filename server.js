@@ -302,7 +302,8 @@ app.post("/api/spotlights", upload.single("img"), (req, res) => {
     };
 
     if(req.file){
-      spot.outerimage = req.file.filename;
+      spot.outerimage = "images/" + req.file.filename;
+      spot.innerimage = "images/" + req.file.filename;
     }
 
     spotlights.push(spot);
@@ -322,9 +323,7 @@ const validateSpotlight = (spotlight) => {
         bodywater:Joi.string().min(3).required(),
         entrytype:Joi.string().min(3).required(),
         rating:Joi.string().min(3).required(),
-        seasons:Joi.string().min(3).required(),
-        innerimage:,
-        outerimage:,
+        seasons:Joi.string().min(3).required()
     });
 
     return schema.validate(spotlight);
