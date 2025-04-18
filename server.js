@@ -320,6 +320,64 @@ app.post("/api/spotlights", upload.fields([
     res.status(200).send(spot);
 });
 
+app.put("/api/spotlights/:id", upload.fields([
+  { name: 'outerimage', maxCount: 1 },
+  { name: 'innerimage', maxCount: 1 }]),(req,res)=>{
+    console.log("Requested ID:", req.params.id);
+    const spot = spotlights.find((spot)=>spot.id===parseInt(req.params.id));
+    console.log("Found spot:", spot);
+
+    if(!spot) {
+      res.status(404).send("The spotlight with the provided id was not found.")
+      return;
+    }
+
+    const result = validateSpotlight(req.body);
+
+    if(result.error){
+      res.status(400).send(result.error.details[0].message);
+      return;
+    }
+
+    spot.name = req.body.name;
+    spot.summary = req.body.summary;
+    spot.latitude = parseFloat(req.body.latitude);
+    spot.longitude = parseFloat(req.body.longitude);
+    spot.fishes = req.body.fishes;
+    spot.flies = req.body.flies;
+    spot.watertype = req.body.watertype;
+    spot.typeofentry = req.body.typeofentry;
+    spot.rating = req.body.rating;
+    spot.seasons = req.body.seasons;
+
+    if (req.files && req.files['outerimage'] && req.files['outerimage'][0]) {
+      spot.outerimage = req.files['outerimage'][0].filename;
+      console.log(spot.outerimage);
+    };
+  
+    if (req.files && req.files['innerimage'] && req.files['innerimage'][0]) {
+      spot.innerimage = req.files['innerimage'][0].filename;
+      console.log(spot.innerimage);
+    };
+
+    res.status(200).send(spot);
+});
+
+app.delete("/api/spotlights/:id", (req, res) =>{
+  console.log("Requested ID:", req.params.id);
+  const spot = spotlights.find((spot)=>spot.id===parseInt(req.params.id));
+  console.log("Found spot:", spot);
+
+  if(!spot) {
+    res.status(404).send("The spotlight with the provided id was not found.")
+    return;
+  }
+
+  const index = spotlights.indexOf(spot);
+  spotlights.splice(index,1);
+  res.status(200).send(spot);
+});
+
 //update form on the other side so that names match both ways!
 const validateSpotlight = (spotlight) => {
     const schema = Joi.object({
