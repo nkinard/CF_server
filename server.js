@@ -7,6 +7,8 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(cors());
 
+//JH2EsuhCd2nleP5F  
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./public/images/");
@@ -27,7 +29,7 @@ app.get("/", (req, res) => {
 //for the link, change it to the render section so that it links to a live site
 let spotlights = [
   {
-    id: 1,
+    _id: 1,
     name: "Chattooga",
     summary:
       "The Chattooga River is one of the southeast's longest rivers and cuts through Georgia, South Carolina, and North Carolina. This spectacular river is home to hundreds of different species of wildlife. The good thing about this river is that there is easy access at almost any point. There are times where the rapids pick up, but there are definitely spots for wading, kayaking, or bank casting. The best, and most popular, access to the river is off of State Highway 28.",
@@ -44,7 +46,7 @@ let spotlights = [
     outerimage: "chattooga.jpg",
   },
   {
-    id: 2,
+    _id: 2,
     name: "Saluda",
     summary:
       "The Saluda River, named after an Algonquian-speaking tribe, runs from the Blue Ridge Mountains to Columbia, South Carolina's Lake Murray. The Saluda water is very temperate and offers great abundance in fish species. The North Saluda, near Greenville SC, is often more abundant in fish as the water is cooler, and as you get to the southern region near the dam in Lake Murray, the water temperature increases. Overall, this river is great for year round fishing and provides young anglers a good starting point.",
@@ -61,7 +63,7 @@ let spotlights = [
     outerimage: "saluda.jpg",
   },
   {
-    id: 3,
+    _id: 3,
     name: "Watauga",
     summary:
       "This large stream runs in the mountains of west North Carolina and on into Tennessee. Due to its high elevation and cold waters, this river is abundant in many trout species. This area is really good for year-round fishing and provides anglers of any skill with a nice challenge.",
@@ -78,7 +80,7 @@ let spotlights = [
     outerimage: "watauga.jpg",
   },
   {
-    id: 4,
+    _id: 4,
     name: "Mitchell",
     summary:
       "The Mitchell River is a large freshwater river that runs in western North Carolina at the base of the Appalachian Mountains. This river is known for its delayed harvest trout where anglers are only allowed to keep catches during certain regulations set forth by the state. Due to this, the populations in this river are abundant and very rewarding. There are many access points near Kapps Mill along River Road. Go and try it out!",
@@ -94,7 +96,7 @@ let spotlights = [
     outerimage: "mitchell.jpg",
   },
   {
-    id: 5,
+    _id: 5,
     name: "Nantahala",
     summary:
       "The Nantahala River, located in western North Carolina, is renowned for its crystal-clear waters and excellent trout fishing opportunities. The river flows through the Nantahala National Forest, offering stunning scenery and diverse fishing experiences. The upper section is known for its wild trout, while the lower section is regularly stocked. The Nantahala Gorge provides challenging whitewater rafting, but there are also plenty of wadeable sections for fly fishing enthusiasts",
@@ -111,7 +113,7 @@ let spotlights = [
     outerimage: "nantahala.jpg",
   },
   {
-    id: 6,
+    _id: 6,
     name: "Davidson",
     summary:
       "The Davidson River, located in Transylvania County, North Carolina, is a premier trout fishing destination. Known for its large and challenging brown trout, the river flows through the Pisgah National Forest. The Davidson offers a mix of wide, easily accessible sections and more remote, boulder-strewn areas. The river's catch-and-release section near the Pisgah Fish Hatchery is particularly popular among fly fishing enthusiasts",
@@ -128,7 +130,7 @@ let spotlights = [
     outerimage: "davidson.jpg",
   },
   {
-    id: 7,
+    _id: 7,
     name: "Wilson Creek",
     summary:
       "Wilson Creek, a Wild and Scenic River in North Carolina, offers excellent trout fishing in a beautiful gorge setting. Located in the Pisgah National Forest, the creek features a mix of plunge pools, pocket water, and boulder-strewn runs. The upper section is known for its wild trout, while the lower sections are stocked. Wilson Creek also offers opportunities for hiking and camping, making it a great destination for outdoor enthusiasts",
@@ -145,7 +147,7 @@ let spotlights = [
     outerimage: "wilson.jpg",
   },
   {
-    id: 8,
+    _id: 8,
     name: "Tuckasegee",
     summary:
       "The Tuckasegee River, often called the 'Tuck' by locals, is a major waterway in western North Carolina. It offers diverse fishing opportunities, from wide, easily wadeable sections to deep pools. The river is known for its healthy population of wild and stocked trout, as well as smallmouth bass in the lower sections. The Delayed Harvest section near Webster provides excellent catch-and-release fishing from October through early June",
@@ -165,7 +167,7 @@ let spotlights = [
 
 let fishes = [
   {
-    id: 1,
+    _id: 1,
     name: "Redfish",
     summary:
       "The Chattooga River is one of the southeast's longest rivers and cuts through Georgia, South Carolina, and North Carolina. This spectacular river is home to hundreds of different species of wildlife. The good thing about this river is that there is easy access at almost any point. There are times where the rapids pick up, but there are definitely spots for wading, kayaking, or bank casting. The best, and most popular, access to the river is off of State Highway 28.",
@@ -178,7 +180,7 @@ let fishes = [
       "The best places to find these fish are in saltwater regions where bank or boat fishing is accessible. It is not reccommended to go wading for thein these fish. Top areas include the flats of Charleston and Beufort as well as the bays and lagoons in the Outer Banks.",
   },
   {
-    id: 2,
+    _id: 2,
     name: "Trout",
     summary:
       "Trout are a very sought after species of fish in the Carolinas. There are many species of trout such as rainbow and brown, both with their own vibrant colors. These fish are mainly found in cooler waters such as streams and rivers in the mountains. To find these kind of fish, you are going to want to go to higher elevations such as the Appalachian mountains. Due to the elevations you may experience, these fish are most enjoyable to catch in the spring and fall time.",
@@ -191,7 +193,7 @@ let fishes = [
       "In the Carolinas, trout are best find in the mountain tops of Appalachia. In North Carolina, rivers like the Nantahala and Watauga are prime spots. In South Carolina, the Chattooga River in the right season can prove to be very rewarding for trout fishing.",
   },
   {
-    id: 3,
+    _id: 3,
     name: "Sheepshead",
     summary:
       "Sheepshead fish are a common saltwater fish found piling up inshore around rocks and other underwater debris. They are known for their unique sharp teeth where they eat barnacles, oysters, and various types of shellfish. Due to this, you sohuld opt to use bait that mimics shellfish. The Sheepshead are easily recognizable with their distinctive black and white patters with large teeth. Further, Sheepshead are not very migratory and only move offshore to spawn in the Spring time.",
@@ -204,7 +206,7 @@ let fishes = [
       "Sheepshead like to pile up around rocks and other debris. Due to this fact, it is best to go to brackish coastal waters around wharfs, shipwrecks, rocks, or other pilings.",
   },
   {
-    id: 4,
+    _id: 4,
     name: "Bass",
     summary:
       "Bass are a native species to the Carolinas and come in many Varieties such as smallmouth, largemouth, and spotted. One of the more abundant fish in this area, bass love to be found in lakes, ponds, streams, and rivers. Bass love to eat just about anything such as crayfish, frogs, insects, minnows, earthworms and sometimes even other bass. Due to their eating habits and predatory nature, bass can be dirty if the environment they live in allows for it. Make sure to always know your local body of water for any pollutants that may exist.",
@@ -220,7 +222,7 @@ let fishes = [
 
 let flies = [
   {
-    id: 1,
+    _id: 1,
     name: "Dry Fly",
     summary:
       "Dry flies are a fly that imitate an adult insect. This technique of fly fishing is best during seasons of insect hatches, when the fish are actively feeding on adult flies. Selecting the right fly pattern based on the water and ecosystem is key to making them effective. To cast, simply cast the fly out and make sure it sits carefully on the water, just as an adult fly would.",
@@ -233,7 +235,7 @@ let flies = [
       "Top fish in the Carolinas that eat dry flies are fish like brown and rainbow trout. These fish love to surface feed on hatching insects. The best seasons are often in the Spring and Fall times. Another common fish to get are smallmouth bass, however they are not as unique.",
   },
   {
-    id: 2,
+    _id: 2,
     name: "Emerger Fly",
     summary:
       "Emerger flies are lightweight flies that mimic the hatching of aquatic prey. Insects such as mayflies and caddis are usually the most popular insects that these flies try to mimic. They are designed to drift with the current of the water and slowly submerge just below the surface. This is to imitate the action of an insect hatching and leaving the steam bed to rise and fly away.",
@@ -246,7 +248,7 @@ let flies = [
       "These flies work best in streams, rivers, and small waterways in freshwater. Due to this fact, bass, brook trout, rainbow trout, and brown trout are best.",
   },
   {
-    id: 3,
+    _id: 3,
     name: "Nymph Fly",
     summary:
       "Nymph flies are artificial flies that try to mimic the very early stages of aquatic life. These flies are used more in the depths of the water. Since these mimic the very immature stage, these can include both flies and worms.",
@@ -259,7 +261,7 @@ let flies = [
       "Top fish that love nymphs are going to be found in rivers, streams, ponds, and lakes. This includes the many varieties of trout and bass!",
   },
   {
-    id: 4,
+    _id: 4,
     name: "Wet Fly",
     summary:
       "Wet flies are a very large type of bait used by flycasters. These flies mimic any aquatic prey that finds itself underwater. The advantage of wet flies is that they can be used in both fresh and saltwaters. Also, wet flies can come in a plethora of designs, shapes, and patterns.",
@@ -289,7 +291,7 @@ app.post("/api/spotlights", upload.fields([
     };
 
     const spot = {
-        id: spotlights.length+1,
+        _id: spotlights.length+1,
         name: req.body.name,
         summary:req.body.summary,
         latitude: parseFloat(req.body.latitude),
@@ -323,8 +325,8 @@ app.post("/api/spotlights", upload.fields([
 app.put("/api/spotlights/:id", upload.fields([
   { name: 'outerimage', maxCount: 1 },
   { name: 'innerimage', maxCount: 1 }]),(req,res)=>{
-    console.log("Requested ID:", req.params.id);
-    const spot = spotlights.find((spot)=>spot.id===parseInt(req.params.id));
+    console.log("Requested ID:", req.params._id);
+    const spot = spotlights.find((spot)=>spot._id===parseInt(req.params.id));
     console.log("Found spot:", spot);
 
     if(!spot) {
@@ -365,7 +367,7 @@ app.put("/api/spotlights/:id", upload.fields([
 
 app.delete("/api/spotlights/:id", (req, res) =>{
   console.log("Requested ID:", req.params.id);
-  const spot = spotlights.find((spot)=>spot.id===parseInt(req.params.id));
+  const spot = spotlights.find((spot)=>spot._id===parseInt(req.params.id));
   console.log("Found spot:", spot);
 
   if(!spot) {
@@ -381,7 +383,7 @@ app.delete("/api/spotlights/:id", (req, res) =>{
 //update form on the other side so that names match both ways!
 const validateSpotlight = (spotlight) => {
     const schema = Joi.object({
-        id:Joi.allow(""),
+        _id:Joi.allow(""),
         name:Joi.string().min(3).required(),
         summary: Joi.string().min(3).required(),
         longitude:Joi.number().required(),
