@@ -238,12 +238,12 @@ app.put("/api/spotlights/:id", upload.fields([
 
     if (req.files && req.files['outerimage'] && req.files['outerimage'][0]) {
       fieldsToUpdate.outerimage = req.files['outerimage'][0].filename;
-      console.log(spot.outerimage);
+      console.log(fieldsToUpdate.outerimage);
     };
   
     if (req.files && req.files['innerimage'] && req.files['innerimage'][0]) {
       fieldsToUpdate.innerimage = req.files['innerimage'][0].filename;
-      console.log(spot.innerimage);
+      console.log(fieldsToUpdate.innerimage);
     };
 
     const wentThrough = await SpotlightSC.updateOne({_id:req.params.id}, fieldsToUpdate);
